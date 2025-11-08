@@ -1,0 +1,10 @@
+{
+  "name": "flat-roof-llc",
+  "repo": {
+    "provider": "github",
+    "repo_path": "booga1234/flat-roof-llc",
+    "branch": "main",
+    "cmd": "npm run build",
+    "dir": "build"
+  }
+}
