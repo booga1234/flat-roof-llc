@@ -95,15 +95,15 @@ export function LoginForm({ className, onSuccess }) {
 
   return (
     <Card className={cn("rounded-3xl border border-black/10 bg-white shadow-xl", className)}>
-      <CardContent className="space-y-6 p-6">
-        <div className="space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">Login to your account</h1>
-          <p className="text-sm text-muted-foreground">
+      <CardContent className="space-y-6 p-6 md:space-y-8">
+        <div className="space-y-2 text-left">
+          <h1 className="text-xl font-semibold tracking-tight">Login to your account</h1>
+          <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
             Enter your email below to login to your account
           </p>
         </div>
-        <form className="space-y-4" onSubmit={handleSubmit}>
-          <div className="space-y-2">
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="space-y-3">
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
@@ -115,12 +115,12 @@ export function LoginForm({ className, onSuccess }) {
               onChange={(event) => setEmail(event.target.value)}
             />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex items-center justify-between">
               <Label htmlFor="password">Password</Label>
               <button
                 type="button"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground"
+                className="text-sm text-foreground underline-offset-4 hover:underline"
                 onClick={handleReset}
                 disabled={loading}
               >
@@ -147,34 +147,36 @@ export function LoginForm({ className, onSuccess }) {
               {feedback}
             </p>
           )}
-          <Button
-            className="w-full rounded-full bg-black text-white hover:bg-black/90"
-            type="submit"
-            disabled={loading}
-          >
-            {loading ? (
-              <span className="flex items-center justify-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                Logging in...
-              </span>
-            ) : (
-              "Login"
-            )}
-          </Button>
+          <div className="space-y-3">
+            <Button
+              className="w-full rounded-full bg-black text-white hover:bg-black/90"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  Logging in...
+                </span>
+              ) : (
+                "Login"
+              )}
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full rounded-full border border-black/10"
+              disabled={loading}
+            >
+              Login with Google
+            </Button>
+          </div>
         </form>
-        <div className="space-y-4 text-center">
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full rounded-full border border-black/10"
-            disabled={loading}
-          >
-            Login with Google
-          </Button>
+        <div className="space-y-6 text-center">
           <p className="text-sm text-muted-foreground">
             Don&apos;t have an account?{" "}
             <a
-              className="font-medium text-foreground underline-offset-4 hover:underline"
+              className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
               href={`${baseUrl}/auth/signup`}
               target="_blank"
               rel="noreferrer"
